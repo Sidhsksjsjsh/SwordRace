@@ -195,7 +195,11 @@ Callback = function(Value)
     Sword = Value
 while wait() do
     if Sword == false then break end
-game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(1))
+local AG1 = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG1))
 end
 end    
 })
@@ -207,7 +211,11 @@ Callback = function(Value)
     Coin = Value
 while wait() do
     if Coin == false then break end
-game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(2))
+local AG2 = {
+    [1] = 2
+}
+
+game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG2))
 end
 end    
 })
