@@ -188,6 +188,15 @@ end
 end    
 })
 
+S1:AddTextbox({
+Name = "how many rounds?",
+Default = "1",
+TextDisappear = true,
+Callback = function(Value)
+      SwordRoundService = Value
+end  
+})
+
 S1:AddToggle({
 Name = "Enable sword farming",
 Default = false,
@@ -195,13 +204,31 @@ Callback = function(Value)
     Sword = Value
 while wait() do
     if Sword == false then break end
+  if SwordRoundService then
 local AG1 = {
-    [1] = 1
+    [1] = SwordRoundService
 }
 
 game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG1))
+else
+OrionLib:MakeNotification({
+Name = "Error",
+Content = "you must fill in 'How many rounds?' to get a very strong sword.",
+Image = "rbxassetid://",
+Time = 5
+})
+end
 end
 end    
+})
+
+S2:AddTextbox({
+Name = "how many rounds?",
+Default = "1",
+TextDisappear = true,
+Callback = function(Value)
+      RoundService = Value
+end  
 })
 
 S2:AddToggle({
@@ -211,11 +238,20 @@ Callback = function(Value)
     Coin = Value
 while wait() do
     if Coin == false then break end
+  if RoundService then
 local AG2 = {
-    [1] = 2
+    [1] = RoundService
 }
 
 game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG2))
+else
+OrionLib:MakeNotification({
+Name = "Error",
+Content = "you have to fill in 'How many rounds?' to get more coins.",
+Image = "rbxassetid://",
+Time = 5
+})
+end
 end
 end    
 })
