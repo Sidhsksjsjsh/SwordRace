@@ -15,6 +15,14 @@ end
 
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = true, ConfigFolder = "TurtleFi"})
 
+
+l
+
+lo
+
+loca
+
+
 local T1 = Window:MakeTab({
 Name = "Farm",
 Icon = "rbxassetid://4483345998",
@@ -34,7 +42,7 @@ Name = "Auto Race"
 })
 
 local S7 = T1:AddSection({
-Name = "Claim Boss Chest or box"
+Name = "Claim Boss Chest & Spawn Boss"
 })
 
 local S8 = T1:AddSection({
@@ -63,6 +71,23 @@ Name = "Shiny"
 
 local S6 = T3:AddSection({
 Name = "Rainbow"
+})
+
+local T4 = Window:MakeTab({
+Name = "VIP Area",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+local S9 = T4:AddSection({
+Name = "Remove VIP Barrier"
+})
+
+S9:AddButton({
+Name = "Remove VIP Barrier",
+Callback = function()
+      print("button pressed")
+  end    
 })
 
 S5:AddDropdown({
@@ -120,6 +145,13 @@ while wait() do
 game:GetService("ReplicatedStorage").Remotes.RE_ClaimBox:FireServer()
 end
 end    
+})
+
+S7:AddButton({
+Name = "Spawn Boss (2 Hours)",
+Callback = function()
+      game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
+  end    
 })
 
 S8:AddToggle({
