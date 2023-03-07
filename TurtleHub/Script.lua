@@ -15,13 +15,16 @@ end
 
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = true, ConfigFolder = "TurtleFi"})
 
+local Vector = Vector3.new
+local CFrame = CFrame.new
 
-l
-
-lo
-
-loca
-
+function RemoveVIP()
+for _,Protocol in pairs(game:GetService("Workspace").WorldMain.Vip:GetChildren()) do
+    if Protocol == "VIPBarrier" then
+    Protocol.Size = Vector(0, 0, 0)
+end
+end
+end
 
 local T1 = Window:MakeTab({
 Name = "Farm",
@@ -86,7 +89,7 @@ Name = "Remove VIP Barrier"
 S9:AddButton({
 Name = "Remove VIP Barrier",
 Callback = function()
-      print("button pressed")
+      RemoveVIP()
   end    
 })
 
