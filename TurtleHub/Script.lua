@@ -94,6 +94,12 @@ local S9 = T4:AddSection({
 Name = "Remove VIP Barrier"
 })
 
+local T5 = Window:MakeTab({
+Name = "Statistic",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
 S9:AddButton({
 Name = "Remove VIP Barrier",
 Callback = function()
@@ -397,7 +403,10 @@ end
 end
 })
 
+T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " 
+)
 
+CoolParagraph:Set("Paragraph New!", "New Paragraph Content!")
 
 
 
