@@ -44,6 +44,14 @@ local S3 = T1:AddSection({
 Name = "Auto Race"
 })
 
+local S10 = T1:AddSection({
+Name = "Auto claim gift / reward"
+})
+
+local S11 = T1:AddSection({
+Name = "Buy and Use or Equip skin"
+})
+
 local S7 = T1:AddSection({
 Name = "Claim Boss Chest & Spawn Boss"
 })
@@ -302,3 +310,99 @@ game:GetService("ReplicatedStorage").Remotes.RF_JoinRace:InvokeServer()
 end
 end    
 })
+
+S10:AddToggle({
+Name = "Auto claim rewards",
+Default = false,
+Callback = function(Value)
+     Reward_124 = Value
+     while wait() do
+        if Reward_124 == false then break end
+local R1 = {
+    [1] = "Rewards001"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R1))
+wait()
+local R2 = {
+    [1] = "Rewards002"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R2))
+wait()
+local R3 = {
+    [1] = "Rewards003"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R3))
+wait()
+local R4 = {
+    [1] = "Rewards004"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R4))
+wait()
+local R5 = {
+    [1] = "Rewards005"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R5))
+wait()
+local R6 = {
+    [1] = "Rewards006"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_ClaimReward:FireServer(unpack(R6))
+end
+end
+})
+
+S11:AddDropdown({
+Name = "Select Skin",
+Default = "none",
+Options = {"Levi", "Tanjirou", "Fox"},
+Callback = function(Value)
+     SkinsCallback = Value
+end
+})
+
+S11:AddToggle({
+Name = "Equip and Unequip skin",
+Default = false,
+Callback = function(Value)
+if SkinsCallback == "Levi" then
+local a_1 = {
+    [1] = "Skin001",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+if SkinsCallback == "Tanjirou" then
+local a_1 = {
+    [1] = "Skin002",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+if SkinsCallback == "Fox" then
+local a_1 = {
+    [1] = "Skin003",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+end
+})
+
+
+
+
+
+
+
+
+
+
