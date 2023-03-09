@@ -219,6 +219,106 @@ Callback = function(Value)
 end    
 })
 
+S4:AddTextbox({
+Name = "Auto Delete pet (1) (example: 00 until 63)",
+Default = "00",
+TextDisappear = false,
+Callback = function(Value)
+   if tonumber(Value) then
+     if Value > 63 then
+     OrionLib:MakeNotification({
+Name = "Limit!",
+Content = "Your pet ID can't be more than 63!",
+Image = "rbxassetid://",
+Time = 5
+})
+     else
+      PetVisual_1 = "Pet0" .. Value
+      end
+   end
+end  
+})
+
+S4:AddTextbox({
+Name = "Auto Delete pet (2) (example: 00 until 63)",
+Default = "00",
+TextDisappear = false,
+Callback = function(Value)
+   if tonumber(Value) then
+     if Value > 63 then
+     OrionLib:MakeNotification({
+Name = "Limit!",
+Content = "Your pet ID can't be more than 63!",
+Image = "rbxassetid://",
+Time = 5
+})
+     else
+      PetVisual_2 = "Pet0" .. Value
+      end
+   end
+end  
+})
+
+S4:AddTextbox({
+Name = "Auto Delete pet (3) (example: 00 until 63)",
+Default = "00",
+TextDisappear = false,
+Callback = function(Value)
+   if tonumber(Value) then
+     if Value > 63 then
+     OrionLib:MakeNotification({
+Name = "Limit!",
+Content = "Your pet ID can't be more than 63!",
+Image = "rbxassetid://",
+Time = 5
+})
+     else
+      PetVisual_3 = "Pet0" .. Value
+      end
+   end
+end  
+})
+
+S4:AddTextbox({
+Name = "Auto Delete pet (4) (example: 00 until 63)",
+Default = "00",
+TextDisappear = false,
+Callback = function(Value)
+   if tonumber(Value) then
+     if Value > 63 then
+     OrionLib:MakeNotification({
+Name = "Limit!",
+Content = "Your pet ID can't be more than 63!",
+Image = "rbxassetid://",
+Time = 5
+})
+     else
+      PetVisual_4 = "Pet0" .. Value
+      end
+   end
+end  
+})
+
+S4:AddTextbox({
+Name = "Auto Delete pet (5) (example: 00 until 63)",
+Default = "00",
+TextDisappear = false,
+Callback = function(Value)
+   if tonumber(Value) then
+     if Value > 63 then
+     OrionLib:MakeNotification({
+Name = "Limit!",
+Content = "Your pet ID can't be more than 63!",
+Image = "rbxassetid://",
+Time = 5
+})
+     else
+      PetVisual_5 = "Pet0" .. Value
+      end
+   end
+end  
+})
+
 S4:AddToggle({
 Name = "Hatch (Auto)",
 Default = false,
@@ -226,13 +326,19 @@ Callback = function(Value)
     EggHatch = Value
 while wait() do
     if EggHatch == false then break end
-local AutoHatch = {
+local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
-    [3] = {}
+    [3] = {
+        [1] = PetVisual_1,
+        [2] = PetVisual_2,
+        [3] = PetVisual_3,
+        [4] = PetVisual_4",
+        [5] = PetVisual_5
+    }
 }
 
-game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(AutoHatch))
+game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
 end    
 })
