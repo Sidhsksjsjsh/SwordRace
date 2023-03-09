@@ -52,6 +52,10 @@ local S11 = T1:AddSection({
 Name = "Buy and Use or Equip skin"
 })
 
+local S12 = T1:AddSection({
+Name = "Auto Swing (Bug Fixed)"
+})
+
 local S7 = T1:AddSection({
 Name = "Claim Boss Chest & Spawn Boss"
 })
@@ -169,6 +173,24 @@ Name = "Spawn Boss (2 Hours)",
 Callback = function()
       game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
   end    
+})
+
+S12:AddToggle({
+Name = "Auto Swing",
+Default = false,
+Callback = function(Value)
+     SwingModV2 = Value
+     while wait() do
+        if SwingModV2 == false then break end
+      local SM2 = {
+    [1] = {
+        [1] = SlimeID[math.random(1, #SlimeID)]
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_Swing:FireServer(unpack(SM2))
+   end
+end
 })
 
 S8:AddToggle({
@@ -348,7 +370,9 @@ Name = "how many rounds?",
 Default = "1",
 TextDisappear = true,
 Callback = function(Value)
+   if tonumber(Value) then
       SwordRoundService = Value
+    end
 end  
 })
 
@@ -382,7 +406,9 @@ Name = "how many rounds?",
 Default = "1",
 TextDisappear = true,
 Callback = function(Value)
+   if tonumber(Value) then
       RoundService = Value
+   end
 end  
 })
 
