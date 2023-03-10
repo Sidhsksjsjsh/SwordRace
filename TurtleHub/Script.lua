@@ -53,7 +53,7 @@ Name = "Buy and Use or Equip skin"
 })
 
 local S12 = T1:AddSection({
-Name = "Auto Swing (Bug Fixed)"
+Name = "Auto Farm POWER (Bug Fixed)"
 })
 
 local S7 = T1:AddSection({
@@ -176,7 +176,7 @@ Callback = function()
 })
 
 S12:AddToggle({
-Name = "Auto Swing",
+Name = "Auto Farm POWER",
 Default = false,
 Callback = function(Value)
      SwingModV2 = Value
@@ -537,9 +537,6 @@ end
 
 T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
 
-while wait() do
-CoolParagraph:Set("Statistic (Leaderboard)", "Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
-end
 
 
 
