@@ -262,38 +262,6 @@ end
 })
 
 S4:AddToggle({
-Name = "Ignore Common and uncommon",
-Default = false,
-Callback = function(Value)
-      IgnoreCommonAndUncommon = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Epic",
-Default = false,
-Callback = function(Value)
-      IgnoreEpic = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Legendary",
-Default = false,
-Callback = function(Value)
-      IgnoreLegendary = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Mythical",
-Default = false,
-Callback = function(Value)
-      IgnoreMythic = Value
-end
-})
-
-S4:AddToggle({
 Name = "Hatch (Auto)",
 Default = false,
 Callback = function(Value)
@@ -304,11 +272,33 @@ local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
     [3] = {
-        [1] = PetVisual_1,
-        [2] = PetVisual_2,
-        [3] = PetVisual_3,
-        [4] = PetVisual_4,
-        [5] = PetVisual_5
+        [1] = "Pet001",
+        [2] = "Pet002",
+        [3] = "Pet006",
+        [4] = "Pet007",
+        [5] = "Pet011",
+        [6] = "Pet001",
+        [7] = "Pet002",
+        [8] = "Pet006",
+        [9] = "Pet007",
+        [10] = "Pet011",
+        [11] = "Pet012",
+        [12] = "Pet018",
+        [13] = "Pet019",
+        [14] = "Pet023",
+        [15] = "Pet024",
+        [16] = "Pet030",
+        [17] = "Pet031",
+        [18] = "Pet035",
+        [19] = "Pet036",
+        [20] = "Pet042",
+        [21] = "Pet043",
+        [22] = "Pet047",
+        [23] = "Pet048",
+        [24] = "Pet054",
+        [25] = "Pet055",
+        [26] = "Pet059",
+        [27] = "Pet060"
     }
 }
 
