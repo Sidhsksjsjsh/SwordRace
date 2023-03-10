@@ -56,6 +56,10 @@ local S12 = T1:AddSection({
 Name = "Auto Farm POWER (Bug Fixed)"
 })
 
+local S13 = T1:AddSection({
+Name = "Auto Damage (only effective for bosses)"
+})
+
 local S7 = T1:AddSection({
 Name = "Claim Boss Chest & Spawn Boss"
 })
@@ -182,6 +186,10 @@ Callback = function(Value)
      SwingModV2 = Value
      while wait() do
         if SwingModV2 == false then break end
+        for _,EnemyID in pairs(game:GetService("Workspace").Orbs:GetChildren()) do
+         table.insert(SlimeID, EnemyID.Name)
+      end
+      wait()
       local SM2 = {
     [1] = {
         [1] = SlimeID[math.random(1, #SlimeID)]
@@ -193,16 +201,14 @@ game:GetService("ReplicatedStorage").Remotes.RE_Swing:FireServer(unpack(SM2))
 end
 })
 
-S12:AddToggle({
-Name = "Auto refresh Slime ID",
+S13:AddToggle({
+Name = "Auto Damage",
 Default = false,
 Callback = function(Value)
-     RefID = Value
-     while wait() do
-        if RefID == false then break end
-      for _,EnemyID in pairs(game:GetService("Workspace").Orbs:GetChildren()) do
-         table.insert(SlimeID, EnemyID.Name)
-      end
+      DealDamageString = Value
+      while wait(1) do
+         if DealDamageString == false then break end
+      game:GetService("ReplicatedStorage").Remotes.RE_TakeDamage:FireServer()
    end
 end
 })
