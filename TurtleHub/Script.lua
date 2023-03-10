@@ -193,6 +193,20 @@ game:GetService("ReplicatedStorage").Remotes.RE_Swing:FireServer(unpack(SM2))
 end
 })
 
+S12:AddToggle({
+Name = "Auto refresh Slime ID",
+Default = false,
+Callback = function(Value)
+     RefID = Value
+     while wait() do
+        if RefID == false then break end
+      for _,EnemyID in pairs(game:GetService("Workspace").Orbs:GetChildren()) do
+         table.insert(SlimeID, EnemyID.Name)
+      end
+   end
+end
+})
+
 S8:AddToggle({
 Name = "Auto Rebirth",
 Default = false,
