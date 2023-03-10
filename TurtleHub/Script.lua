@@ -355,7 +355,7 @@ local A_1 = {
         [1] = PetVisual_1,
         [2] = PetVisual_2,
         [3] = PetVisual_3,
-        [4] = PetVisual_4",
+        [4] = PetVisual_4,
         [5] = PetVisual_5
     }
 }
