@@ -255,10 +255,42 @@ end
 S4:AddDropdown({
 Name = "Select Egg",
 Default = "none",
-Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw0010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015"},
+Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015"},
 Callback = function(Value)
       EggStatus = Value
 end    
+})
+
+S4:AddToggle({
+Name = "Ignore Common and Uncommon (auto delete)",
+Default = false,
+Callback = function(Value)
+       IgnoreCommonandUn = Value
+end
+})
+
+S4:AddToggle({
+Name = "Ignore Epic (auto delete)",
+Default = false,
+Callback = function(Value)
+       IgnoreEpic = Value
+end
+})
+
+S4:AddToggle({
+Name = "Ignore Legendary (auto delete)",
+Default = false,
+Callback = function(Value)
+       IgnoreLegendary = Value
+end
+})
+
+S4:AddToggle({
+Name = "Ignore Mythical (auto delete)",
+Default = false,
+Callback = function(Value)
+       IgnoreMythical = Value
+end
 })
 
 S4:AddToggle({
@@ -268,6 +300,7 @@ Callback = function(Value)
     EggHatch = Value
 while wait() do
     if EggHatch == false then break end
+    if IgnoreCommonandUn then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -303,6 +336,71 @@ local A_1 = {
 }
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
+end
+if IgnoreEpic then
+local A_1 = {
+    [1] = "Hatch",
+    [2] = EggStatus,
+    [3] = {
+        [1] = "Pet003",
+        [2] = "Pet008",
+        [3] = "Pet013",
+        [4] = "Pet020",
+        [5] = "Pet025",
+        [6] = "Pet032",
+        [7] = "Pet037",
+        [8] = "Pet044",
+        [9] = "Pet049",
+        [10] = "Pet056",
+        [11] = "Pet061" -- end
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
+end
+if IgnoreLegendary then
+local A_1 = {
+    [1] = "Hatch",
+    [2] = EggStatus,
+    [3] = {
+        [1] = "Pet004",
+        [2] = "Pet009",
+        [3] = "Pet014",
+        [4] = "Pet021",
+        [5] = "Pet026",
+        [6] = "Pet033",
+        [7] = "Pet038",
+        [8] = "Pet045",
+        [9] = "Pet050",
+        [10] = "Pet057",
+        [11] = "Pet062" -- end
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
+end
+if IgnoreMythical then
+local A_1 = {
+    [1] = "Hatch",
+    [2] = EggStatus,
+    [3] = {
+        [1] = "Pet005",
+        [2] = "Pet010",
+        [3] = "Pet015",
+        [4] = "Pet022",
+        [5] = "Pet027",
+        [6] = "Pet034",
+        [7] = "Pet039",
+        [8] = "Pet046",
+        [9] = "Pet051",
+        [10] = "Pet058",
+        [11] = "Pet063" -- end
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
+end
+-- end for while true do
 end
 end    
 })
