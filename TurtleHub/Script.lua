@@ -1,5 +1,23 @@
 -- Sword race
 
+local Common = {
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+     A_1 = ""
+}
+
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 
 local PetTable = {}
@@ -337,7 +355,7 @@ local A_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if IgnoreEpic then
+if IgnoreEpic and IgnoreCommonandUn then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -358,7 +376,7 @@ local A_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if IgnoreLegendary then
+if IgnoreLegendary and IgnoreEpic or IgnoreCommonandUn then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
