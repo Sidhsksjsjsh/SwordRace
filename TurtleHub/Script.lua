@@ -1,21 +1,28 @@
 -- Sword race
 
 local Common = {
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
-     A_1 = ""
+     A_1 = "Pet001",
+     A_2 = "Pet002",
+     A_3 = "Pet006",
+     A_4 = "Pet007",
+     A_5 = "Pet011",
+     A_6 = "Pet012",
+     A_7 = "Pet018",
+     A_8 = "Pet019",
+     A_9 = "Pet023",
+     A_10 = "Pet024",
+     A_11 = "Pet030",
+     A_12 = "Pet031",
+     A_13 = "Pet035",
+     A_14 = "Pet036",
+     A_15 = "Pet042",
+     A_16 = "Pet043",
+     A_17 = "Pet047",
+     A_18 = "Pet048",
+     A_19 = "Pet054",
+     A_20 = "Pet055",
+     A_21 = "Pet059",
+     A_22 = "Pet060",
 }
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
