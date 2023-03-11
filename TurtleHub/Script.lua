@@ -23,6 +23,64 @@ local Common = {
      A_20 = "Pet055",
      A_21 = "Pet059",
      A_22 = "Pet060",
+     A_23 = "Pet066",
+     A_24 = "Pet067",
+     A_25 = "Pet071",
+     A_26 = "Pet072"
+}
+
+local Epic = {
+      B_1 = "Pet003",
+      B_2 = "Pet008",
+      B_3 = "Pet013",
+      B_4 = "Pet020",
+      B_5 = "Pet025",
+      B_6 = "Pet032",
+      B_7 = "Pet037",
+      B_8 = "Pet044",
+      B_9 = "Pet049",
+      B_10 = "Pet056",
+      B_11 = "Pet061",
+      B_12 = "Pet066",
+      B_13 = "Pet067",
+      B_14 = "Pet071",
+      B_15 = "Pet072"
+}
+
+local Legendary = {
+      C_1 = "Pet004",
+      C_2 = "Pet009",
+      C_3 = "Pet014",
+      C_4 = "Pet021",
+      C_5 = "Pet026",
+      C_6 = "Pet033",
+      C_7 = "Pet038",
+      C_8 = "Pet045",
+      C_9 = "Pet050",
+      C_10 = "Pet057",
+      C_11 = "Pet062",
+      C_12 = "Pet067",
+      C_13 = "Pet068",
+      C_14 = "Pet072",
+      C_15 = "Pet073"
+}
+
+local Mythical = {
+      D_1 = "Pet005",
+      D_2 = "Pet010",
+      D_3 = "Pet015",
+      D_4 = "Pet022",
+      D_5 = "Pet027",
+      D_6 = "Pet034",
+      D_7 = "Pet039",
+      D_8 = "Pet046",
+      D_9 = "Pet051",
+      D_10 = "Pet058",
+      D_11 = "Pet063",
+      D_12 = "Pet068",
+      D_13 = "Pet069",
+      D_14 = "Pet073",
+      D_15 = "Pet074"
 }
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
@@ -280,42 +338,19 @@ end
 S4:AddDropdown({
 Name = "Select Egg",
 Default = "none",
-Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015"},
+Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015", "Draw017", "Draw018"},
 Callback = function(Value)
       EggStatus = Value
 end    
 })
 
-S4:AddToggle({
-Name = "Ignore Common and Uncommon (auto delete)",
-Default = false,
+S4:AddDropdown({
+Name = "Auto Ignore",
+Default = "none",
+Options = {"Common and Uncommon", "Epic", "Legendary", "Mythical"},
 Callback = function(Value)
-       IgnoreCommonandUn = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Epic (auto delete)",
-Default = false,
-Callback = function(Value)
-       IgnoreEpic = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Legendary (auto delete)",
-Default = false,
-Callback = function(Value)
-       IgnoreLegendary = Value
-end
-})
-
-S4:AddToggle({
-Name = "Ignore Mythical (auto delete)",
-Default = false,
-Callback = function(Value)
-       IgnoreMythical = Value
-end
+      EggIgnoreRare = Value
+end    
 })
 
 S4:AddToggle({
@@ -325,101 +360,235 @@ Callback = function(Value)
     EggHatch = Value
 while wait() do
     if EggHatch == false then break end
-    if IgnoreCommonandUn then
+    if EggIgnoreRare == "Common and Uncommon" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
     [3] = {
-        [1] = "Pet001",
-        [2] = "Pet002",
-        [3] = "Pet006",
-        [4] = "Pet007",
-        [5] = "Pet011",
-        [6] = "Pet001",
-        [7] = "Pet002",
-        [8] = "Pet006",
-        [9] = "Pet007",
-        [10] = "Pet011",
-        [11] = "Pet012",
-        [12] = "Pet018",
-        [13] = "Pet019",
-        [14] = "Pet023",
-        [15] = "Pet024",
-        [16] = "Pet030",
-        [17] = "Pet031",
-        [18] = "Pet035",
-        [19] = "Pet036",
-        [20] = "Pet042",
-        [21] = "Pet043",
-        [22] = "Pet047",
-        [23] = "Pet048",
-        [24] = "Pet054",
-        [25] = "Pet055",
-        [26] = "Pet059",
-        [27] = "Pet060"
+        [1] = Common.A_1,
+        [2] = Common.A_2,
+        [3] = Common.A_3,
+        [4] = Common.A_4,
+        [5] = Common.A_5,
+        [6] = Common.A_6,
+        [7] = Common.A_7,
+        [8] = Common.A_8,
+        [9] = Common.A_9,
+        [10] = Common.A_10,
+        [11] = Common.A_11,
+        [12] = Common.A_12,
+        [13] = Common.A_13,
+        [14] = Common.A_14,
+        [15] = Common.A_15,
+        [16] = Common.A_16,
+        [17] = Common.A_17,
+        [18] = Common.A_18,
+        [19] = Common.A_19,
+        [20] = Common.A_20,
+        [21] = Common.A_21,
+        [22] = Common.A_22,
+        [23] = Common.A_23,
+        [24] = Common.A_24,
+        [25] = Common.A_25,
+        [26] = Common.A_26
     }
 }
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if IgnoreEpic and IgnoreCommonandUn then
+if EggIgnoreRare == "Epic" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
     [3] = {
-        [1] = "Pet003",
-        [2] = "Pet008",
-        [3] = "Pet013",
-        [4] = "Pet020",
-        [5] = "Pet025",
-        [6] = "Pet032",
-        [7] = "Pet037",
-        [8] = "Pet044",
-        [9] = "Pet049",
-        [10] = "Pet056",
-        [11] = "Pet061" -- end
+        [1] = Common.A_1,
+        [2] = Common.A_2,
+        [3] = Common.A_3,
+        [4] = Common.A_4,
+        [5] = Common.A_5,
+        [6] = Common.A_6,
+        [7] = Common.A_7,
+        [8] = Common.A_8,
+        [9] = Common.A_9,
+        [10] = Common.A_10,
+        [11] = Common.A_11,
+        [12] = Common.A_12,
+        [13] = Common.A_13,
+        [14] = Common.A_14,
+        [15] = Common.A_15,
+        [16] = Common.A_16,
+        [17] = Common.A_17,
+        [18] = Common.A_18,
+        [19] = Common.A_19,
+        [20] = Common.A_20,
+        [21] = Common.A_21,
+        [22] = Common.A_22,
+        [23] = Common.A_23,
+        [24] = Common.A_24,
+        [25] = Common.A_25,
+        [26] = Common.A_26,
+        [27] = Epic.B_1,
+        [28] = Epic.B_2,
+        [29] = Epic.B_3,
+        [30] = Epic.B_4,
+        [31] = Epic.B_5,
+        [32] = Epic.B_6,
+        [33] = Epic.B_7,
+        [34] = Epic.B_8,
+        [35] = Epic.B_9,
+        [36] = Epic.B_10,
+        [37] = Epic.B_11,
+        [38] = Epic.B_12,
+        [39] = Epic.B_13,
+        [40] = Epic.B_14,
+        [41] = Epic.B_15
     }
 }
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if IgnoreLegendary and IgnoreEpic or IgnoreCommonandUn then
+if EggIgnoreRare == "Legendary" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
     [3] = {
-        [1] = "Pet004",
-        [2] = "Pet009",
-        [3] = "Pet014",
-        [4] = "Pet021",
-        [5] = "Pet026",
-        [6] = "Pet033",
-        [7] = "Pet038",
-        [8] = "Pet045",
-        [9] = "Pet050",
-        [10] = "Pet057",
-        [11] = "Pet062" -- end
+        [1] = Common.A_1,
+        [2] = Common.A_2,
+        [3] = Common.A_3,
+        [4] = Common.A_4,
+        [5] = Common.A_5,
+        [6] = Common.A_6,
+        [7] = Common.A_7,
+        [8] = Common.A_8,
+        [9] = Common.A_9,
+        [10] = Common.A_10,
+        [11] = Common.A_11,
+        [12] = Common.A_12,
+        [13] = Common.A_13,
+        [14] = Common.A_14,
+        [15] = Common.A_15,
+        [16] = Common.A_16,
+        [17] = Common.A_17,
+        [18] = Common.A_18,
+        [19] = Common.A_19,
+        [20] = Common.A_20,
+        [21] = Common.A_21,
+        [22] = Common.A_22,
+        [23] = Common.A_23,
+        [24] = Common.A_24,
+        [25] = Common.A_25,
+        [26] = Common.A_26,
+        [27] = Epic.B_1,
+        [28] = Epic.B_2,
+        [29] = Epic.B_3,
+        [30] = Epic.B_4,
+        [31] = Epic.B_5,
+        [32] = Epic.B_6,
+        [33] = Epic.B_7,
+        [34] = Epic.B_8,
+        [35] = Epic.B_9,
+        [36] = Epic.B_10,
+        [37] = Epic.B_11,
+        [38] = Epic.B_12,
+        [39] = Epic.B_13,
+        [40] = Epic.B_14,
+        [41] = Epic.B_15,
+        [42] = Legendary.C_1,
+        [43] = Legendary.C_2,
+        [44] = Legendary.C_3,
+        [45] = Legendary.C_4,
+        [46] = Legendary.C_5,
+        [47] = Legendary.C_6,
+        [48] = Legendary.C_7,
+        [49] = Legendary.C_8,
+        [50] = Legendary.C_9,
+        [51] = Legendary.C_10,
+        [52] = Legendary.C_11,
+        [53] = Legendary.C_12,
+        [54] = Legendary.C_13,
+        [55] = Legendary.C_14,
+        [56] = Legendary.C_15
     }
 }
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if IgnoreMythical then
+if EggIgnoreRare == "Mythical" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
     [3] = {
-        [1] = "Pet005",
-        [2] = "Pet010",
-        [3] = "Pet015",
-        [4] = "Pet022",
-        [5] = "Pet027",
-        [6] = "Pet034",
-        [7] = "Pet039",
-        [8] = "Pet046",
-        [9] = "Pet051",
-        [10] = "Pet058",
-        [11] = "Pet063" -- end
+        [1] = Common.A_1,
+        [2] = Common.A_2,
+        [3] = Common.A_3,
+        [4] = Common.A_4,
+        [5] = Common.A_5,
+        [6] = Common.A_6,
+        [7] = Common.A_7,
+        [8] = Common.A_8,
+        [9] = Common.A_9,
+        [10] = Common.A_10,
+        [11] = Common.A_11,
+        [12] = Common.A_12,
+        [13] = Common.A_13,
+        [14] = Common.A_14,
+        [15] = Common.A_15,
+        [16] = Common.A_16,
+        [17] = Common.A_17,
+        [18] = Common.A_18,
+        [19] = Common.A_19,
+        [20] = Common.A_20,
+        [21] = Common.A_21,
+        [22] = Common.A_22,
+        [23] = Common.A_23,
+        [24] = Common.A_24,
+        [25] = Common.A_25,
+        [26] = Common.A_26,
+        [27] = Epic.B_1,
+        [28] = Epic.B_2,
+        [29] = Epic.B_3,
+        [30] = Epic.B_4,
+        [31] = Epic.B_5,
+        [32] = Epic.B_6,
+        [33] = Epic.B_7,
+        [34] = Epic.B_8,
+        [35] = Epic.B_9,
+        [36] = Epic.B_10,
+        [37] = Epic.B_11,
+        [38] = Epic.B_12,
+        [39] = Epic.B_13,
+        [40] = Epic.B_14,
+        [41] = Epic.B_15,
+        [42] = Legendary.C_1,
+        [43] = Legendary.C_2,
+        [44] = Legendary.C_3,
+        [45] = Legendary.C_4,
+        [46] = Legendary.C_5,
+        [47] = Legendary.C_6,
+        [48] = Legendary.C_7,
+        [49] = Legendary.C_8,
+        [50] = Legendary.C_9,
+        [51] = Legendary.C_10,
+        [52] = Legendary.C_11,
+        [53] = Legendary.C_12,
+        [54] = Legendary.C_13,
+        [55] = Legendary.C_14,
+        [56] = Legendary.C_15,
+        [57] = Mythical.D_1,
+        [58] = Mythical.D_2,
+        [59] = Mythical.D_3,
+        [60] = Mythical.D_4,
+        [61] = Mythical.D_5,
+        [62] = Mythical.D_6,
+        [63] = Mythical.D_7,
+        [64] = Mythical.D_8,
+        [65] = Mythical.D_9,
+        [66] = Mythical.D_10,
+        [67] = Mythical.D_11,
+        [68] = Mythical.D_12,
+        [69] = Mythical.D_13,
+        [70] = Mythical.D_14,
+        [71] = Mythical.D_15
     }
 }
 
