@@ -111,7 +111,7 @@ end
 
 local T1 = Window:MakeTab({
 Name = "Farm",
-Icon = "rbxassetid://4483345998",
+Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
@@ -153,7 +153,7 @@ Name = "Auto Rebirth"
 
 local T2 = Window:MakeTab({
 Name = "Egg",
-Icon = "rbxassetid://4483345998",
+Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
@@ -163,7 +163,7 @@ Name = "Egg (Auto Hatch)"
 
 local T3 = Window:MakeTab({
 Name = "Pet",
-Icon = "rbxassetid://4483345998",
+Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
@@ -177,7 +177,7 @@ Name = "Rainbow"
 
 local T4 = Window:MakeTab({
 Name = "VIP Area",
-Icon = "rbxassetid://4483345998",
+Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
@@ -187,7 +187,13 @@ Name = "Remove VIP Barrier"
 
 local T5 = Window:MakeTab({
 Name = "Statistic",
-Icon = "rbxassetid://4483345998",
+Icon = "rbxassetid://",
+PremiumOnly = false
+})
+
+local T6 = Window:MakeTab({
+Name = "Info",
+Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
@@ -350,6 +356,12 @@ Default = "none",
 Options = {"Common and Uncommon", "Epic", "Legendary", "Mythical"},
 Callback = function(Value)
       EggIgnoreRare = Value
+      OrionLib:MakeNotification({
+Name = "What is Auto Ignore?",
+Content = "Please read the Info section if you don't know what 'Auto Ignore' is.",
+Image = "rbxassetid://",
+Time = 5
+})
 end    
 })
 
@@ -771,7 +783,7 @@ end
 
 T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
 
-
+T6:AddParagraph("Auto Ignore","Auto Ignore is an automatic delete pet \nwhich means the pet you choose will be deleted, \nFor example, you choose: Mythical \nthe pet will be automatically removed from Common until Mythical")
 
 
 
