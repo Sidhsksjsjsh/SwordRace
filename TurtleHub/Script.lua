@@ -611,51 +611,23 @@ end
 end    
 })
 
-S1:AddTextbox({
-Name = "how many rounds?",
-Default = "1",
-TextDisappear = true,
-Callback = function(Value)
-   if tonumber(Value) then
-      SwordRoundService = Value
-    end
-end  
-})
+local RoundCount = 0
+S2:AddLabel("Count: " .. RoundCount)
 
-S1:AddToggle({
-Name = "Enable sword farming",
-Default = false,
-Callback = function(Value)
-    Sword = Value
-while wait() do
-    if Sword == false then break end
-  if SwordRoundService then
-local AG1 = {
-    [1] = SwordRoundService
-}
-
-game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG1))
-else
-OrionLib:MakeNotification({
-Name = "Error",
-Content = "you must fill in 'How many rounds?' to get a very strong sword.",
-Image = "rbxassetid://",
-Time = 5
-})
+S2:AddButton({
+Name = "Add Round",
+Callback = function()
+     RoundCount = RoundCount + 1
+     CoolLabel:Set("Count: " .. RoundCount)
 end
-end
-end    
 })
 
-S2:AddTextbox({
-Name = "how many rounds?",
-Default = "1",
-TextDisappear = true,
-Callback = function(Value)
-   if tonumber(Value) then
-      RoundService = Value
-   end
-end  
+S2:AddButton({
+Name = "Reset Round Count",
+Callback = function()
+     RoundCount = 0
+     CoolLabel:Set("Count: " .. RoundCount)
+end
 })
 
 S2:AddToggle({
@@ -665,7 +637,6 @@ Callback = function(Value)
     Coin = Value
 while wait() do
     if Coin == false then break end
-  if RoundService then
 local AG2 = {
     [1] = RoundService
 }
