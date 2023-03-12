@@ -638,18 +638,10 @@ Callback = function(Value)
 while wait() do
     if Coin == false then break end
 local AG2 = {
-    [1] = RoundService
+    [1] = RoundCount
 }
 
 game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG2))
-else
-OrionLib:MakeNotification({
-Name = "Error",
-Content = "you have to fill in 'How many rounds?' to get more coins.",
-Image = "rbxassetid://",
-Time = 5
-})
-end
 end
 end    
 })
