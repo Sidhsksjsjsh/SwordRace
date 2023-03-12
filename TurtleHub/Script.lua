@@ -612,13 +612,18 @@ end
 })
 
 local RoundCount = 0
-S2:AddLabel("Count: " .. RoundCount)
+S2:AddLabel("Farm coins by: C4#4172")
 
 S2:AddButton({
 Name = "Add Round",
 Callback = function()
      RoundCount = RoundCount + 1
-     CoolLabel:Set("Count: " .. RoundCount)
+     OrionLib:MakeNotification({
+Name = "Round Cound",
+Content = RoundCount,
+Image = "rbxassetid://",
+Time = 5
+})
 end
 })
 
@@ -626,7 +631,12 @@ S2:AddButton({
 Name = "Reset Round Count",
 Callback = function()
      RoundCount = 0
-     CoolLabel:Set("Count: " .. RoundCount)
+     OrionLib:MakeNotification({
+Name = "Round Cound",
+Content = RoundCount,
+Image = "rbxassetid://",
+Time = 5
+})
 end
 })
 
