@@ -130,6 +130,31 @@ _G.Settings = {
       text_16 = "",
       
 }
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+local a = "Turtle Settings"
+local b = "SettingsJSON.lua"
+function saveSettings()
+    local c = game:GetService("HttpService")
+    local d = c:JSONEncode(_G.Settings)
+    if writefile then
+        if isfolder(a) then
+            writefile(a .. "-" .. b, d)
+        else
+            makefolder(a)
+            writefile(a .. "-" .. b, d)
+        end
+    end
+end
+function loadSettings()
+    local c = game:GetService("HttpService")
+    if isfile(a .. "-" .. b) then
+        _G.Settings = c:JSONDecode(readfile(a .. "-" .. b))
+    end
+end
+loadSettings()
 -- _G.Settings.toggle_1
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
@@ -259,6 +284,7 @@ Default = _G.Settings.text_1,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_1 = Value
+      saveSettings()
 end    
 })
 
@@ -268,6 +294,7 @@ Default = _G.Settings.text_2,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_2 = Value
+      saveSettings()
 end    
 })
 
@@ -277,6 +304,7 @@ Default = _G.Settings.text_3,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_3 = Value
+      saveSettings()
 end    
 })
 
@@ -286,6 +314,7 @@ Default = _G.Settings.text_4,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_4 = Value
+      saveSettings()
 end    
 })
 
@@ -295,6 +324,7 @@ Default = _G.Settings.text_5,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_5 = Value
+      saveSettings()
 end    
 })
 
@@ -303,6 +333,7 @@ Name = "Auto claim boss chest",
 Default = _G.Settings.toggle_1,
 Callback = function(Value)
      _G.Settings.Chest_V = Value
+     saveSettings()
 while wait() do
      if _G.Settings.Chest_V == false then break end
 game:GetService("ReplicatedStorage").Remotes.RE_ClaimBox:FireServer()
@@ -313,6 +344,7 @@ end
 S7:AddButton({
 Name = "Spawn Boss (2 Hours)",
 Callback = function()
+      saveSettings()
       game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
   end    
 })
@@ -322,6 +354,7 @@ Name = "Auto Farm POWER",
 Default = _G.Settings.toggle_2,
 Callback = function(Value)
      _G.Settings.SwingModV2 = Value
+     saveSettings()
      while wait() do
         if _G.Settings.SwingModV2 == false then break end
         for _,EnemyID in pairs(game:GetService("Workspace").Orbs:GetChildren()) do
@@ -344,6 +377,7 @@ Name = "Auto Damage",
 Default = _G.Settings.toggle_3,
 Callback = function(Value)
       _G.Settings.DealDamageString = Value
+      saveSettings()
       while wait(1) do
          if _G.Settings.DealDamageString == false then break end
       game:GetService("ReplicatedStorage").Remotes.RE_TakeDamage:FireServer()
@@ -356,6 +390,7 @@ Name = "Auto Rebirth",
 Default = _G.Settings.toggle_4,
 Callback = function(Value)
      _G.Settings.Rebirth = Value
+     saveSettings()
 while wait() do
      if _G.Settings.Rebirth == false then break end
 game:GetService("ReplicatedStorage").Remotes.RE_Rebirth:FireServer()
@@ -366,6 +401,7 @@ end
 S5:AddButton({
 Name = "Shiny (Must be 100%)",
 Callback = function()
+saveSettings()
 if PetWorkspace_1 and PetWorkspace_2 and PetWorkspace_3 and PetWorkspace_4 and PetWorkspace_5 then
 local ShinyPet = {
     [1] = 2,
@@ -396,6 +432,7 @@ Default = _G.Settings.text_6,
 Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015", "Draw017", "Draw018"},
 Callback = function(Value)
       _G.Settings.EggStatus = Value
+      saveSettings()
 end    
 })
 
@@ -405,6 +442,7 @@ Default = _G.Settings.text_7,
 Options = {"Common and Uncommon", "Epic", "Legendary", "Mythical"},
 Callback = function(Value)
       _G.Settings.EggIgnoreRare = Value
+      saveSettings()
       OrionLib:MakeNotification({
 Name = "What is Auto Ignore?",
 Content = "Please read the Info section if you don't know what 'Auto Ignore' is.",
@@ -419,6 +457,7 @@ Name = "Hatch (Auto)",
 Default = _G.Settings.toggle_5,
 Callback = function(Value)
     _G.Settings.EggHatch = Value
+    saveSettings()
 while wait() do
     if _G.Settings.EggHatch == false then break end
     if _G.Settings.EggIgnoreRare == "Common and Uncommon" then
@@ -667,6 +706,7 @@ S2:AddButton({
 Name = "Add Round",
 Callback = function()
      _G.Settings.RoundCount = _G.Settings.RoundCount + 1
+     saveSettings()
      OrionLib:MakeNotification({
 Name = "Round Cound",
 Content = _G.Settings.RoundCount,
@@ -680,6 +720,7 @@ S2:AddButton({
 Name = "Reset Round Count",
 Callback = function()
      _G.Settings.RoundCount = 0
+     saveSettings()
      OrionLib:MakeNotification({
 Name = "Round Cound",
 Content = _G.Settings.RoundCount,
@@ -694,6 +735,7 @@ Name = "Enable coin farming",
 Default = _G.Settings.toggle_6,
 Callback = function(Value)
     _G.Settings.Coin = Value
+    saveSettings()
 while wait() do
     if _G.Settings.Coin == false then break end
 local AG2 = {
@@ -710,6 +752,7 @@ Name = "Race",
 Default = _G.Settings.toggle_7,
 Callback = function(Value)
     _G.Settings.Race = Value
+    saveSettings()
 while wait() do
     if _G.Settings.Race == false then break end
 game:GetService("ReplicatedStorage").Remotes.RF_JoinRace:InvokeServer()
@@ -722,6 +765,7 @@ Name = "Auto claim rewards",
 Default = _G.Settings.toggle_8,
 Callback = function(Value)
      _G.Settings.Reward_124 = Value
+     saveSettings()
      while wait() do
         if _G.Settings.Reward_124 == false then break end
 local R1 = {
@@ -766,9 +810,10 @@ end
 S11:AddDropdown({
 Name = "Select Skin",
 Default = _G.Settings.text_8,
-Options = {"Levi", "Tanjirou", "Fox", "Kid Goku", "Super Saiyan Goku"},
+Options = {"Levi", "Tanjirou", "Fox", "Kid Goku", "Super Saiyan Goku", "Goku Ultra Naluri"},
 Callback = function(Value)
      _G.Settings.SkinsCallback = Value
+     saveSettings()
 end
 })
 
@@ -776,6 +821,7 @@ S11:AddToggle({
 Name = "Equip and Unequip skin",
 Default = _G.Settings.toggle_9,
 Callback = function(Value)
+saveSettings()
 if _G.Settings.SkinsCallback == "Levi" then
 local a_1 = {
     [1] = "Skin001",
@@ -795,6 +841,30 @@ end
 if _G.Settings.SkinsCallback == "Fox" then
 local a_1 = {
     [1] = "Skin003",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+if _G.Settings.SkinsCallback == "Kid Goku" then
+local a_1 = {
+    [1] = "Skin004",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+if _G.Settings.SkinsCallback == "Super Saiyan Goku" then
+local a_1 = {
+    [1] = "Skin005",
+    [2] = Value
+}
+
+game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
+end
+if _G.Settings.SkinsCallback == "Goku Ultra Naluri" then
+local a_1 = {
+    [1] = "Skin006",
     [2] = Value
 }
 
