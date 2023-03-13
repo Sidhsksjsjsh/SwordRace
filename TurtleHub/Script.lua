@@ -83,6 +83,25 @@ local Mythical = {
       D_15 = "Pet074"
 }
 
+_G.Settings = {
+      PetWorkspace_1 = "",
+      PetWorkspace_2 = "",
+      PetWorkspace_3 = "",
+      PetWorkspace_4 = "",
+      PetWorkspace_5 = "",
+      Chest_V = false,
+      SwingModV2 = false,
+      DealDamageString = false,
+      Rebirth = false,
+      EggStatus = "",
+      EggIgnoreRare = "",
+      EggHatch = false,
+      RoundCount = 0,
+      Coin = false,
+      Race = false,
+      Reward_124 = false
+}
+
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 
 local PetTable = {}
@@ -209,7 +228,7 @@ Name = "Select Pet ID (20%)",
 Default = "none",
 Options = PetTable,
 Callback = function(Value)
-      PetWorkspace_1 = Value
+      _G.Settings.PetWorkspace_1 = Value
 end    
 })
 
@@ -218,7 +237,7 @@ Name = "Select Pet ID (40%)",
 Default = "none",
 Options = PetTable,
 Callback = function(Value)
-      PetWorkspace_2 = Value
+      _G.Settings.PetWorkspace_2 = Value
 end    
 })
 
@@ -227,7 +246,7 @@ Name = "Select Pet ID (60%)",
 Default = "none",
 Options = PetTable,
 Callback = function(Value)
-      PetWorkspace_3 = Value
+      _G.Settings.PetWorkspace_3 = Value
 end    
 })
 
@@ -236,7 +255,7 @@ Name = "Select Pet ID (80%)",
 Default = "none",
 Options = PetTable,
 Callback = function(Value)
-      PetWorkspace_4 = Value
+      _G.Settings.PetWorkspace_4 = Value
 end    
 })
 
@@ -245,7 +264,7 @@ Name = "Select Pet ID (100%)",
 Default = "none",
 Options = PetTable,
 Callback = function(Value)
-      PetWorkspace_5 = Value
+      _G.Settings.PetWorkspace_5 = Value
 end    
 })
 
@@ -253,9 +272,9 @@ S7:AddToggle({
 Name = "Auto claim boss chest",
 Default = false,
 Callback = function(Value)
-     Chest_V = Value
+     _G.Settings.Chest_V = Value
 while wait() do
-     if Chest_V == false then break end
+     if _G.Settings.Chest_V == false then break end
 game:GetService("ReplicatedStorage").Remotes.RE_ClaimBox:FireServer()
 end
 end    
@@ -272,9 +291,9 @@ S12:AddToggle({
 Name = "Auto Farm POWER",
 Default = false,
 Callback = function(Value)
-     SwingModV2 = Value
+     _G.Settings.SwingModV2 = Value
      while wait() do
-        if SwingModV2 == false then break end
+        if _G.Settings.SwingModV2 == false then break end
         for _,EnemyID in pairs(game:GetService("Workspace").Orbs:GetChildren()) do
          table.insert(SlimeID, EnemyID.Name)
       end
@@ -294,9 +313,9 @@ S13:AddToggle({
 Name = "Auto Damage",
 Default = false,
 Callback = function(Value)
-      DealDamageString = Value
+      _G.Settings.DealDamageString = Value
       while wait(1) do
-         if DealDamageString == false then break end
+         if _G.Settings.DealDamageString == false then break end
       game:GetService("ReplicatedStorage").Remotes.RE_TakeDamage:FireServer()
    end
 end
@@ -306,9 +325,9 @@ S8:AddToggle({
 Name = "Auto Rebirth",
 Default = false,
 Callback = function(Value)
-     Chest_V = Value
+     _G.Settings.Rebirth = Value
 while wait() do
-     if Chest_V == false then break end
+     if _G.Settings.Rebirth == false then break end
 game:GetService("ReplicatedStorage").Remotes.RE_Rebirth:FireServer()
 end
 end    
@@ -321,11 +340,11 @@ if PetWorkspace_1 and PetWorkspace_2 and PetWorkspace_3 and PetWorkspace_4 and P
 local ShinyPet = {
     [1] = 2,
     [2] = {
-        [1] = PetWorkspace_1, -- 20
-        [2] = PetWorkspace_2, -- 40
-        [3] = PetWorkspace_3, -- 60
-        [4] = PetWorkspace_4, -- 80
-        [5] = PetWorkspace_5 -- 100
+        [1] = _G.Settings.PetWorkspace_1, -- 20
+        [2] = _G.Settings.PetWorkspace_2, -- 40
+        [3] = _G.Settings.PetWorkspace_3, -- 60
+        [4] = _G.Settings.PetWorkspace_4, -- 80
+        [5] = _G.Settings.PetWorkspace_5 -- 100
     }
 }
 
@@ -346,7 +365,7 @@ Name = "Select Egg",
 Default = "none",
 Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015", "Draw017", "Draw018"},
 Callback = function(Value)
-      EggStatus = Value
+      _G.Settings.EggStatus = Value
 end    
 })
 
@@ -355,7 +374,7 @@ Name = "Auto Ignore",
 Default = "none",
 Options = {"Common and Uncommon", "Epic", "Legendary", "Mythical"},
 Callback = function(Value)
-      EggIgnoreRare = Value
+      _G.Settings.EggIgnoreRare = Value
       OrionLib:MakeNotification({
 Name = "What is Auto Ignore?",
 Content = "Please read the Info section if you don't know what 'Auto Ignore' is.",
@@ -369,10 +388,10 @@ S4:AddToggle({
 Name = "Hatch (Auto)",
 Default = false,
 Callback = function(Value)
-    EggHatch = Value
+    _G.Settings.EggHatch = Value
 while wait() do
-    if EggHatch == false then break end
-    if EggIgnoreRare == "Common and Uncommon" then
+    if _G.Settings.EggHatch == false then break end
+    if _G.Settings.EggIgnoreRare == "Common and Uncommon" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -408,7 +427,7 @@ local A_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if EggIgnoreRare == "Epic" then
+if _G.Settings.EggIgnoreRare == "Epic" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -459,7 +478,7 @@ local A_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if EggIgnoreRare == "Legendary" then
+if _G.Settings.EggIgnoreRare == "Legendary" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -525,7 +544,7 @@ local A_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
-if EggIgnoreRare == "Mythical" then
+if _G.Settings.EggIgnoreRare == "Mythical" then
 local A_1 = {
     [1] = "Hatch",
     [2] = EggStatus,
@@ -611,16 +630,16 @@ end
 end    
 })
 
-local RoundCount = 0
+_G.Settings.RoundCount = 0
 S2:AddLabel("Farm coins by: C4#4172")
 
 S2:AddButton({
 Name = "Add Round",
 Callback = function()
-     RoundCount = RoundCount + 1
+     _G.Settings.RoundCount = _G.Settings.RoundCount + 1
      OrionLib:MakeNotification({
 Name = "Round Cound",
-Content = RoundCount,
+Content = _G.Settings.RoundCount,
 Image = "rbxassetid://",
 Time = 5
 })
@@ -630,10 +649,10 @@ end
 S2:AddButton({
 Name = "Reset Round Count",
 Callback = function()
-     RoundCount = 0
+     _G.Settings.RoundCount = 0
      OrionLib:MakeNotification({
 Name = "Round Cound",
-Content = RoundCount,
+Content = _G.Settings.RoundCount,
 Image = "rbxassetid://",
 Time = 5
 })
@@ -644,11 +663,11 @@ S2:AddToggle({
 Name = "Enable coin farming",
 Default = false,
 Callback = function(Value)
-    Coin = Value
+    _G.Settings.Coin = Value
 while wait() do
-    if Coin == false then break end
+    if _G.Settings.Coin == false then break end
 local AG2 = {
-    [1] = RoundCount
+    [1] = _G.Settings.RoundCount
 }
 
 game:GetService("ReplicatedStorage").Remotes.RF_WeaponDraw:InvokeServer(unpack(AG2))
@@ -660,9 +679,9 @@ S3:AddToggle({
 Name = "Race",
 Default = false,
 Callback = function(Value)
-    Race = Value
+    _G.Settings.Race = Value
 while wait() do
-    if Race == false then break end
+    if _G.Settings.Race == false then break end
 game:GetService("ReplicatedStorage").Remotes.RF_JoinRace:InvokeServer()
 end
 end    
@@ -672,9 +691,9 @@ S10:AddToggle({
 Name = "Auto claim rewards",
 Default = false,
 Callback = function(Value)
-     Reward_124 = Value
+     _G.Settings.Reward_124 = Value
      while wait() do
-        if Reward_124 == false then break end
+        if _G.Settings.Reward_124 == false then break end
 local R1 = {
     [1] = "Rewards001"
 }
@@ -719,7 +738,7 @@ Name = "Select Skin",
 Default = "none",
 Options = {"Levi", "Tanjirou", "Fox"},
 Callback = function(Value)
-     SkinsCallback = Value
+     _G.Settings.SkinsCallback = Value
 end
 })
 
@@ -727,7 +746,7 @@ S11:AddToggle({
 Name = "Equip and Unequip skin",
 Default = false,
 Callback = function(Value)
-if SkinsCallback == "Levi" then
+if _G.Settings.SkinsCallback == "Levi" then
 local a_1 = {
     [1] = "Skin001",
     [2] = Value
@@ -735,7 +754,7 @@ local a_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
 end
-if SkinsCallback == "Tanjirou" then
+if _G.Settings.SkinsCallback == "Tanjirou" then
 local a_1 = {
     [1] = "Skin002",
     [2] = Value
@@ -743,7 +762,7 @@ local a_1 = {
 
 game:GetService("ReplicatedStorage").Remotes.RE_SkinEquip:FireServer(unpack(a_1))
 end
-if SkinsCallback == "Fox" then
+if _G.Settings.SkinsCallback == "Fox" then
 local a_1 = {
     [1] = "Skin003",
     [2] = Value
@@ -755,10 +774,6 @@ end
 })
 
 local ParagraphService = T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
-
-while wait() do
-ParagraphService:Set("Statistic (Leaderboard)", "Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
-end
 
 T6:AddParagraph("Auto Ignore","Auto Ignore is an automatic delete pet \nwhich means the pet you choose will be deleted, \nFor example, you choose: Mythical \nthe pet will be automatically removed from Common until Mythical")
 
