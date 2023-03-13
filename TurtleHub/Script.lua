@@ -766,7 +766,7 @@ end
 S11:AddDropdown({
 Name = "Select Skin",
 Default = _G.Settings.text_8,
-Options = {"Levi", "Tanjirou", "Fox"},
+Options = {"Levi", "Tanjirou", "Fox", "Kid Goku", "Super Saiyan Goku"},
 Callback = function(Value)
      _G.Settings.SkinsCallback = Value
 end
