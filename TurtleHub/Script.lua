@@ -99,8 +99,38 @@ _G.Settings = {
       RoundCount = 0,
       Coin = false,
       Race = false,
-      Reward_124 = false
+      Reward_124 = false,
+      toggle_1 = false,
+      toggle_2 = false,
+      toggle_3 = false,
+      toggle_4 = false,
+      toggle_5 = false,
+      toggle_6 = false,
+      toggle_7 = false,
+      toggle_8 = false,
+      toggle_9 = false,
+      toggle_10 = false,
+      toggle_11 = false,
+      toggle_12 = false,
+      text_1 = "",
+      text_2 = "",
+      text_3 = "",
+      text_4 = "",
+      text_5 = "",
+      text_6 = "",
+      text_7 = "",
+      text_8 = "",
+      text_9 = "",
+      text_10 = "",
+      text_11 = "",
+      text_12 = "",
+      text_13 = "",
+      text_14 = "",
+      text_15 = "",
+      text_16 = "",
+      
 }
+-- _G.Settings.toggle_1
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 
@@ -225,7 +255,7 @@ Callback = function()
 
 S5:AddDropdown({
 Name = "Select Pet ID (20%)",
-Default = "none",
+Default = _G.Settings.text_1,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_1 = Value
@@ -234,7 +264,7 @@ end
 
 S5:AddDropdown({
 Name = "Select Pet ID (40%)",
-Default = "none",
+Default = _G.Settings.text_2,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_2 = Value
@@ -243,7 +273,7 @@ end
 
 S5:AddDropdown({
 Name = "Select Pet ID (60%)",
-Default = "none",
+Default = _G.Settings.text_3,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_3 = Value
@@ -252,7 +282,7 @@ end
 
 S5:AddDropdown({
 Name = "Select Pet ID (80%)",
-Default = "none",
+Default = _G.Settings.text_4,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_4 = Value
@@ -261,7 +291,7 @@ end
 
 S5:AddDropdown({
 Name = "Select Pet ID (100%)",
-Default = "none",
+Default = _G.Settings.text_5,
 Options = PetTable,
 Callback = function(Value)
       _G.Settings.PetWorkspace_5 = Value
@@ -270,7 +300,7 @@ end
 
 S7:AddToggle({
 Name = "Auto claim boss chest",
-Default = false,
+Default = _G.Settings.toggle_1,
 Callback = function(Value)
      _G.Settings.Chest_V = Value
 while wait() do
@@ -289,7 +319,7 @@ Callback = function()
 
 S12:AddToggle({
 Name = "Auto Farm POWER",
-Default = false,
+Default = _G.Settings.toggle_2,
 Callback = function(Value)
      _G.Settings.SwingModV2 = Value
      while wait() do
@@ -311,7 +341,7 @@ end
 
 S13:AddToggle({
 Name = "Auto Damage",
-Default = false,
+Default = _G.Settings.toggle_3,
 Callback = function(Value)
       _G.Settings.DealDamageString = Value
       while wait(1) do
@@ -323,7 +353,7 @@ end
 
 S8:AddToggle({
 Name = "Auto Rebirth",
-Default = false,
+Default = _G.Settings.toggle_4,
 Callback = function(Value)
      _G.Settings.Rebirth = Value
 while wait() do
@@ -362,7 +392,7 @@ end
 
 S4:AddDropdown({
 Name = "Select Egg",
-Default = "none",
+Default = _G.Settings.text_6,
 Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015", "Draw017", "Draw018"},
 Callback = function(Value)
       _G.Settings.EggStatus = Value
@@ -371,7 +401,7 @@ end
 
 S4:AddDropdown({
 Name = "Auto Ignore",
-Default = "none",
+Default = _G.Settings.text_7,
 Options = {"Common and Uncommon", "Epic", "Legendary", "Mythical"},
 Callback = function(Value)
       _G.Settings.EggIgnoreRare = Value
@@ -386,7 +416,7 @@ end
 
 S4:AddToggle({
 Name = "Hatch (Auto)",
-Default = false,
+Default = _G.Settings.toggle_5,
 Callback = function(Value)
     _G.Settings.EggHatch = Value
 while wait() do
@@ -661,7 +691,7 @@ end
 
 S2:AddToggle({
 Name = "Enable coin farming",
-Default = false,
+Default = _G.Settings.toggle_6,
 Callback = function(Value)
     _G.Settings.Coin = Value
 while wait() do
@@ -677,7 +707,7 @@ end
 
 S3:AddToggle({
 Name = "Race",
-Default = false,
+Default = _G.Settings.toggle_7,
 Callback = function(Value)
     _G.Settings.Race = Value
 while wait() do
@@ -689,7 +719,7 @@ end
 
 S10:AddToggle({
 Name = "Auto claim rewards",
-Default = false,
+Default = _G.Settings.toggle_8,
 Callback = function(Value)
      _G.Settings.Reward_124 = Value
      while wait() do
@@ -735,7 +765,7 @@ end
 
 S11:AddDropdown({
 Name = "Select Skin",
-Default = "none",
+Default = _G.Settings.text_8,
 Options = {"Levi", "Tanjirou", "Fox"},
 Callback = function(Value)
      _G.Settings.SkinsCallback = Value
@@ -744,7 +774,7 @@ end
 
 S11:AddToggle({
 Name = "Equip and Unequip skin",
-Default = false,
+Default = _G.Settings.toggle_9,
 Callback = function(Value)
 if _G.Settings.SkinsCallback == "Levi" then
 local a_1 = {
@@ -773,7 +803,7 @@ end
 end
 })
 
-local ParagraphService = T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
+T5:AddParagraph("Statistic (Leaderboard)","Power: " .. tostring(game.Players.LocalPlayer.leaderstats.Power.Value) .. "\nCoins; " .. tostring(game.Players.LocalPlayer.leaderstats.Coins.Value) .. "\nRebirth: " .. tostring(game.Players.LocalPlayer.leaderstats.Rebirths.Value) .. "")
 
 T6:AddParagraph("Auto Ignore","Auto Ignore is an automatic delete pet \nwhich means the pet you choose will be deleted, \nFor example, you choose: Mythical \nthe pet will be automatically removed from Common until Mythical")
 
