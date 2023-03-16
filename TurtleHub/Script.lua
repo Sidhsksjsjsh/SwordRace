@@ -462,7 +462,7 @@ while wait() do
     if _G.Settings.EggIgnoreRare == "Common and Uncommon" then
 local A_1 = {
     [1] = "Hatch",
-    [2] = EggStatus,
+    [2] = _G.Settings.EggStatus,
     [3] = {
         [1] = Common.A_1,
         [2] = Common.A_2,
@@ -498,7 +498,7 @@ end
 if _G.Settings.EggIgnoreRare == "Epic" then
 local A_1 = {
     [1] = "Hatch",
-    [2] = EggStatus,
+    [2] = _G.Settings.EggStatus,
     [3] = {
         [1] = Common.A_1,
         [2] = Common.A_2,
@@ -549,7 +549,7 @@ end
 if _G.Settings.EggIgnoreRare == "Legendary" then
 local A_1 = {
     [1] = "Hatch",
-    [2] = EggStatus,
+    [2] = _G.Settings.EggStatus,
     [3] = {
         [1] = Common.A_1,
         [2] = Common.A_2,
@@ -615,7 +615,7 @@ end
 if _G.Settings.EggIgnoreRare == "Mythical" then
 local A_1 = {
     [1] = "Hatch",
-    [2] = EggStatus,
+    [2] = _G.Settings.EggStatus,
     [3] = {
         [1] = Common.A_1,
         [2] = Common.A_2,
