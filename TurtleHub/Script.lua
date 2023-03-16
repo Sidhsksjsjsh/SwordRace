@@ -150,17 +150,17 @@ function saveSettings()
     local d = c:JSONEncode(_G.Settings)
     if writefile then
         if isfolder(a) then
-            writefile(a .. "-" .. b, d)
+            writefile(a .. "+" .. b, d)
         else
             makefolder(a)
-            writefile(a .. "-" .. b, d)
+            writefile(a .. "+" .. b, d)
         end
     end
 end
 function loadSettings()
     local c = game:GetService("HttpService")
-    if isfile(a .. "-" .. b) then
-        _G.Settings = c:JSONDecode(readfile(a .. "-" .. b))
+    if isfile(a .. "+" .. b) then
+        _G.Settings = c:JSONDecode(readfile(a .. "+" .. b))
     end
 end
 loadSettings()
