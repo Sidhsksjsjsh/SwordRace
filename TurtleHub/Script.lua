@@ -457,7 +457,6 @@ Name = "Hatch (Auto)",
 Default = _G.Settings.toggle_5,
 Callback = function(Value)
     _G.Settings.EggHatch = Value
-    saveSettings()
 while wait() do
     if _G.Settings.EggHatch == false then break end
     if _G.Settings.EggIgnoreRare == "Common and Uncommon" then
@@ -696,6 +695,7 @@ game:GetService("ReplicatedStorage").Remotes.RE_Draw:FireServer(unpack(A_1))
 end
 -- end for while true do
 end
+saveSettings()
 end    
 })
 
