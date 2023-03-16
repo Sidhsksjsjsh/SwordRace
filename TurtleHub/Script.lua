@@ -83,6 +83,10 @@ local Mythical = {
       D_15 = "Pet074"
 }
 
+function Delay(Marks)
+        wait(Marks)
+end
+
 _G.Settings = {
       PetWorkspace_1 = "",
       PetWorkspace_2 = "",
@@ -224,6 +228,7 @@ Name = "Claim Boss Chest & Spawn Boss"
 local S8 = T1:AddSection({
 Name = "Auto Rebirth"
 })
+
 
 local T2 = Window:MakeTab({
 Name = "Egg",
