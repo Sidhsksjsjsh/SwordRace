@@ -116,6 +116,7 @@ _G.Settings = {
       toggle_10 = false,
       toggle_11 = false,
       toggle_12 = false,
+      toggle_13 = false,
       text_1 = "",
       text_2 = "",
       text_3 = "",
@@ -132,7 +133,11 @@ _G.Settings = {
       text_14 = "",
       text_15 = "",
       text_16 = "",
-      
+      EquipPetDelay = 5,
+      EquipSwordDelay = 5,
+      EquipA_1 = false,
+      EquipA_2 = false,
+      IndexClaim = false
 }
 
 if not game:IsLoaded() then
@@ -229,6 +234,9 @@ local S8 = T1:AddSection({
 Name = "Auto Rebirth"
 })
 
+local S15 = T1:AddSection({
+Name = "Auto Claim INDEX"
+})
 
 local T2 = Window:MakeTab({
 Name = "Egg",
@@ -255,13 +263,17 @@ Name = "Rainbow"
 })
 
 local T4 = Window:MakeTab({
-Name = "VIP Area",
+Name = "Equip",
 Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
 local S9 = T4:AddSection({
-Name = "Remove VIP Barrier"
+Name = "Auto Equip (SWORD)"
+})
+
+local S14 = T4:AddSection({
+Name = "Auto Equip (PET)"
 })
 
 local T5 = Window:MakeTab({
@@ -276,11 +288,126 @@ Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
-S9:AddButton({
-Name = "Remove VIP Barrier",
-Callback = function()
-      RemoveVIP()
+S9:AddTextbox({
+Name = "Auto Equip Delay (Number)",
+Default = "5",
+TextDisappear = true,
+Callback = function(Value)
+      _G.Settings.EquipSwordDelay = Value
+      saveSettings()
   end    
+})
+
+S9:AddToggle({
+Name = "Auto Equip best sword",
+Default = _G.Settings.toggle_10,
+Callback = function(Value)
+     _G.Settings.EquipA_1 = Value
+     saveSettings()
+     while Delay(_G.Settings.EquipSwordDelay) do
+         if _G.Settings.EquipA_1 == false then break end
+     game:GetService("ReplicatedStorage").Remotes.RE_WeaponEquipBest:FireServer()
+  end
+end
+})
+
+S14:AddTextbox({
+Name = "Auto Equip Delay (Number)",
+Default = "5",
+TextDisappear = true,
+Callback = function(Value)
+      _G.Settings.EquipPetDelay = Value
+      saveSettings()
+  end    
+})
+
+S14:AddToggle({
+Name = "Auto Equip best pet",
+Default = _G.Settings.toggle_11,
+Callback = function(Value)
+     _G.Settings.EquipA_2 = Value
+     saveSettings()
+     while Delay(_G.Settings.EquipPetDelay) do
+         if _G.Settings.EquipA_2 == false then break end
+     local args = {
+    [1] = true
+     }
+
+    game:GetService("ReplicatedStorage").Remotes.RE_EquipBest:FireServer(unpack(args))
+  end
+end
+})
+
+S15:AddToggle({
+Name = "Auto Claim INDEX (1 - 12)",
+Default = _G.Settings.toggle_12,
+Callback = function(Value)
+       _G.Settings.IndexClaim = Value
+       saveSettings()
+       while Delay() do
+         if _G.Settings.IndexClaim == false then break end
+         local Index_1 = {
+        [1] = "Index001" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_1))
+         local Index_2 = {
+        [1] = "Index002" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_2))
+         local Index_3 = {
+        [1] = "Index003" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_3))
+         local Index_4 = {
+        [1] = "Index004" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_4))
+         local Index_5 = {
+        [1] = "Index005" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_5))
+         local Index_6 = {
+        [1] = "Index006" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_6))
+         local Index_7 = {
+        [1] = "Index007" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_7))
+         local Index_8 = {
+        [1] = "Index008" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_8))
+         local Index_9 = {
+        [1] = "Index009" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_9))
+         local Index_10 = {
+        [1] = "Index010" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_10))
+         local Index_11 = {
+        [1] = "Index011" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_11))
+         local Index_12 = {
+        [1] = "Index012" -- 12
+         }
+
+       game:GetService("ReplicatedStorage").Remotes.RE_PetIndexRewardClaimed:FireServer(unpack(Index_12))
+   end
+end
 })
 
 S5:AddDropdown({
