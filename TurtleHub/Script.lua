@@ -638,12 +638,11 @@ local A_1 = {
         [23] = Common.A_23,
         [24] = Common.A_24,
         [25] = Common.A_25,
-        [26] = Common.A_26
+        [26] = Common.A_26,
         [27] = Common.A_27,
         [28] = Common.A_28,
         [29] = Common.A_29,
-        [30] = Common.A_30
-        
+        [30] = Common.A_30     
     }
 }
 
