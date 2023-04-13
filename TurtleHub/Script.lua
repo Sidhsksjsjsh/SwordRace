@@ -588,6 +588,10 @@ local SyncReset = S4:AddDropdown({Name = "Select Egg", Default = _G.Settings.tex
 end    
 })
 
+SyncWorld.Waveside
+SyncReset:Refresh(AsyncWorldName,true)
+TickAsync()
+
 S4:AddDropdown({
 Name = "Select World",
 Default = "Forest",
@@ -595,6 +599,7 @@ Options = {"Forest", "Desert", "Winter", "Flower", "Bread", "Star", "Waveside"},
 Callback = function(Value)
       AsyncWorldValue = Value
       SyncWorld[AsyncWorldValue]
+      SyncReset:Refresh(AsyncWorldName,true)
       TickAsync()
 end
 })
