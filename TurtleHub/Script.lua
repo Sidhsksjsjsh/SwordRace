@@ -171,6 +171,8 @@ local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 local PetTable = {}
 local SlimeID = {}
 
+
+
 for _,PetID in pairs(game:GetService("Workspace").Pets:GetChildren()) do
     table.insert(PetTable, PetID.Name)
 end
@@ -191,6 +193,28 @@ for _,Protocol in pairs(game:GetService("Workspace").WorldMain.Vip:GetChildren()
 end
 end
 end
+
+local SyncWorld = {
+             Forest = "Forest",
+             Desert = "Desert",
+             Winter = "Winter",
+             Flower = "Flower",
+             Bread = "Bread",
+             Star = "Star",
+             Waveside = "Waveside"
+}
+
+local AsyncWorldValue = ""
+
+local AsyncWorldName = {}
+
+function TickAsync()
+for _,MainSyncWorld in pairs(game:GetService("Workspace")[SyncWorld[AsyncWorldValue]].EggMachines:GetChildren()) do
+    table.insert(AsyncWorldName, PetID.Name)
+end
+end
+
+
 
 local T1 = Window:MakeTab({
 Name = "Farm",
@@ -558,14 +582,21 @@ end
 end
 })
 
-S4:AddDropdown({
-Name = "Select Egg",
-Default = _G.Settings.text_6,
-Options = {"Draw001", "Draw002", "Draw003", "Draw004", "Draw005", "Draw006", "Draw007", "Draw008", "Draw009", "Draw010", "Draw011", "Draw012", "Draw013", "Draw014", "Draw015", "Draw017", "Draw018"},
-Callback = function(Value)
+local SyncReset = S4:AddDropdown({Name = "Select Egg", Default = _G.Settings.text_6, Options = AsyncWorldName, Callback = function(Value)
       _G.Settings.EggStatus = Value
       saveSettings()
 end    
+})
+
+S4:AddDropdown({
+Name = "Select World",
+Default = "Forest",
+Options = {"Forest", "Desert", "Winter", "Flower", "Bread", "Star", "Waveside"},
+Callback = function(Value)
+      AsyncWorldValue = Value
+      SyncWorld[AsyncWorldValue]
+      TickAsync()
+end
 })
 
 S4:AddDropdown({
