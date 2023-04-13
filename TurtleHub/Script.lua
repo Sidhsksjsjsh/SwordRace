@@ -26,7 +26,11 @@ local Common = {
      A_23 = "Pet066",
      A_24 = "Pet067",
      A_25 = "Pet071",
-     A_26 = "Pet072"
+     A_26 = "Pet072",
+     A_27 = "Pet078",
+     A_28 = "Pet079",
+     A_29 = "Pet083",
+     A_30 = "Pet084"
 }
 
 local Epic = {
@@ -44,7 +48,10 @@ local Epic = {
       B_12 = "Pet066",
       B_13 = "Pet067",
       B_14 = "Pet071",
-      B_15 = "Pet072"
+      B_15 = "Pet072",
+      B_16 = "Pet080",
+      B_17 = "Pet085",
+      B_18 = ""
 }
 
 local Legendary = {
@@ -62,7 +69,9 @@ local Legendary = {
       C_12 = "Pet067",
       C_13 = "Pet068",
       C_14 = "Pet072",
-      C_15 = "Pet073"
+      C_15 = "Pet073",
+      C_16 = "Pet081",
+      C_17 = "Pet085"
 }
 
 local Mythical = {
@@ -80,7 +89,9 @@ local Mythical = {
       D_12 = "Pet068",
       D_13 = "Pet069",
       D_14 = "Pet073",
-      D_15 = "Pet074"
+      D_15 = "Pet074",
+      D_16 = "Pet082"
+      D_17 = "Pet087"
 }
 
 function Delay(Marks)
@@ -500,7 +511,8 @@ end
 S7:AddButton({
 Name = "Spawn Boss (2 Hours)",
 Callback = function()
-      saveSettings()
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").WorldMain.Machines.Monster.Position)
+      Delay(0.5)
       game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
   end    
 })
@@ -582,27 +594,17 @@ end
 end
 })
 
-local SyncReset = S4:AddDropdown({Name = "Select Egg", Default = _G.Settings.text_6, Options = AsyncWorldName, Callback = function(Value)
+S4:AddDropdown({
+Name = "Select Egg", 
+Default = _G.Settings.text_6, 
+Options = {"Draw001","Draw002","Draw003","Draw004","Draw005","Draw006","Draw007","Draw008","Draw009","Draw010","Draw011","Draw012","Draw013","Draw014","Draw015","Draw016","Draw017","Draw018","Draw019","Draw020","Draw021"}, 
+Callback = function(Value)
       _G.Settings.EggStatus = Value
       saveSettings()
 end    
 })
 
-SyncWorld.Waveside
-SyncReset:Refresh(AsyncWorldName,true)
-TickAsync()
 
-S4:AddDropdown({
-Name = "Select World",
-Default = "Forest",
-Options = {"Forest", "Desert", "Winter", "Flower", "Bread", "Star", "Waveside"},
-Callback = function(Value)
-      AsyncWorldValue = Value
-      SyncWorld[AsyncWorldValue]
-      SyncReset:Refresh(AsyncWorldName,true)
-      TickAsync()
-end
-})
 
 S4:AddDropdown({
 Name = "Auto Ignore",
@@ -658,6 +660,11 @@ local A_1 = {
         [24] = Common.A_24,
         [25] = Common.A_25,
         [26] = Common.A_26
+        [27] = Common.A_27,
+        [28] = Common.A_28,
+        [29] = Common.A_29,
+        [30] = Common.A_30
+        
     }
 }
 
@@ -708,7 +715,13 @@ local A_1 = {
         [38] = Epic.B_12,
         [39] = Epic.B_13,
         [40] = Epic.B_14,
-        [41] = Epic.B_15
+        [41] = Epic.B_15,
+        [42] = Epic.B_16,
+        [43] = Epic.B_17,
+        [44] = Common.A_27,
+        [45] = Common.A_28,
+        [46] = Common.A_29,
+        [47] = Common.A_30
     }
 }
 
@@ -745,36 +758,44 @@ local A_1 = {
         [24] = Common.A_24,
         [25] = Common.A_25,
         [26] = Common.A_26,
-        [27] = Epic.B_1,
-        [28] = Epic.B_2,
-        [29] = Epic.B_3,
-        [30] = Epic.B_4,
-        [31] = Epic.B_5,
-        [32] = Epic.B_6,
-        [33] = Epic.B_7,
-        [34] = Epic.B_8,
-        [35] = Epic.B_9,
-        [36] = Epic.B_10,
-        [37] = Epic.B_11,
-        [38] = Epic.B_12,
-        [39] = Epic.B_13,
-        [40] = Epic.B_14,
-        [41] = Epic.B_15,
-        [42] = Legendary.C_1,
-        [43] = Legendary.C_2,
-        [44] = Legendary.C_3,
-        [45] = Legendary.C_4,
-        [46] = Legendary.C_5,
-        [47] = Legendary.C_6,
-        [48] = Legendary.C_7,
-        [49] = Legendary.C_8,
-        [50] = Legendary.C_9,
-        [51] = Legendary.C_10,
-        [52] = Legendary.C_11,
-        [53] = Legendary.C_12,
-        [54] = Legendary.C_13,
-        [55] = Legendary.C_14,
-        [56] = Legendary.C_15
+        [27] = Common.A_27,
+        [28] = Common.A_28,
+        [29] = Common.A_29,
+        [30] = Common.A_30,
+        [31] = Epic.B_1,
+        [32] = Epic.B_2,
+        [33] = Epic.B_3,
+        [34] = Epic.B_4,
+        [35] = Epic.B_5,
+        [36] = Epic.B_6,
+        [37] = Epic.B_7,
+        [38] = Epic.B_8,
+        [39] = Epic.B_9,
+        [40] = Epic.B_10,
+        [41] = Epic.B_11,
+        [44] = Epic.B_12,
+        [45] = Epic.B_13,
+        [46] = Epic.B_14,
+        [47] = Epic.B_15,
+        [48] = Epic.B_16,
+        [49] = Epic.B_17,
+        [50] = Legendary.C_1,
+        [51] = Legendary.C_2,
+        [52] = Legendary.C_3,
+        [53] = Legendary.C_4,
+        [54] = Legendary.C_5,
+        [55] = Legendary.C_6,
+        [56] = Legendary.C_7,
+        [57] = Legendary.C_8,
+        [58] = Legendary.C_9,
+        [59] = Legendary.C_10,
+        [60] = Legendary.C_11,
+        [61] = Legendary.C_12,
+        [62] = Legendary.C_13,
+        [63] = Legendary.C_14,
+        [64] = Legendary.C_15,
+        [65] = Legendary.C_16,
+        [66] = Legendary.C_17
     }
 }
 
@@ -826,6 +847,8 @@ local A_1 = {
         [39] = Epic.B_13,
         [40] = Epic.B_14,
         [41] = Epic.B_15,
+        [42] = Epic.B_16,
+        [43] = Epic.B_17,
         [42] = Legendary.C_1,
         [43] = Legendary.C_2,
         [44] = Legendary.C_3,
@@ -855,7 +878,16 @@ local A_1 = {
         [68] = Mythical.D_12,
         [69] = Mythical.D_13,
         [70] = Mythical.D_14,
-        [71] = Mythical.D_15
+        [71] = Mythical.D_15,
+        [71] = Common.A_27,
+        [72] = Common.A_28,
+        [73] = Common.A_29,
+        [74] = Common.A_30,
+        [75] = Epic.B_17,
+        [76] = Legendary.C_16,
+        [77] = Legendary.C_17,
+        [78] = Mythical.D_16,
+        [79] = Mythical.D_17
     }
 }
 
