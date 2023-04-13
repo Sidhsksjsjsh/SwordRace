@@ -205,6 +205,18 @@ end
 end
 end
 
+local TweenService = game:GetService("TweenService")
+
+function TPType(TypeSync, Pos)
+      if TypeSync == "Teleport" then
+      local pos = CFrame.new(pos)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+   end
+      if TypeSync == "Tween" then
+      local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+      {CFrame = CFrame.new(pos)}):Play()
+   end
+end
 
 local T1 = Window:MakeTab({
 Name = "Farm",
@@ -490,7 +502,8 @@ end
 S7:AddButton({
 Name = "Spawn Boss (2 Hours)",
 Callback = function()
-      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").WorldMain.Machines.Monster.Position)
+      local post = CFrame.new(game:GetService("Workspace").WorldMain.Machines.Monster.Position)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = post
       wait(0.5)
       game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
   end    
@@ -525,7 +538,7 @@ Default = _G.Settings.toggle_3,
 Callback = function(Value)
       _G.Settings.DealDamageString = Value
       saveSettings()
-      while wait(1) do
+      while wait(0.5) do
          if _G.Settings.DealDamageString == false then break end
       game:GetService("ReplicatedStorage").Remotes.RE_TakeDamage:FireServer()
    end
@@ -925,15 +938,24 @@ end
 end    
 })
 
+S3:AddDropdown({
+Name = "Race Teleport Type",
+Default = "?",
+Options = {"Tween", "Teleport"},
+Callback = function(Value)
+      TypeFunctionSync = Value
+end
+})
+
 S3:AddToggle({
-Name = "Race",
+Name = "Race (Cooldown: 3s)",
 Default = _G.Settings.toggle_7,
 Callback = function(Value)
     _G.Settings.Race = Value
     saveSettings()
-while wait() do
+while wait(3) do
     if _G.Settings.Race == false then break end
-game:GetService("ReplicatedStorage").Remotes.RF_JoinRace:InvokeServer()
+     TPType(TypeFunctionSync, game.Workspace.WorldMain.Walls.Launch.Position)
 end
 end    
 })
