@@ -90,7 +90,7 @@ local Mythical = {
       D_13 = "Pet069",
       D_14 = "Pet073",
       D_15 = "Pet074",
-      D_16 = "Pet082"
+      D_16 = "Pet082",
       D_17 = "Pet087"
 }
 
