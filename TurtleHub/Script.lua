@@ -491,7 +491,7 @@ S7:AddButton({
 Name = "Spawn Boss (2 Hours)",
 Callback = function()
       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").WorldMain.Machines.Monster.Position)
-      Delay(0.5)
+      wait(0.5)
       game:GetService("ReplicatedStorage").Remotes.RE_SummonBoss:FireServer()
   end    
 })
